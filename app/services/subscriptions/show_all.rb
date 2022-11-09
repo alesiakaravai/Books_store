@@ -11,7 +11,8 @@ module Subscriptions
     end
 
     def task_214b
-      Subscription.where(is_active: true).group(:book_id).uniq.count
+      #Subscription.where(is_active: true).group(:book_id).uniq.count
+      Subscription.where(is_active: true).distinct.count(:book_id)
     end
 
     def task_214TSK.A

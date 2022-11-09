@@ -6,8 +6,5 @@ module Genres
       @params = params
     end
 
-    def call
-      Genre.all
-    end
   end
 end

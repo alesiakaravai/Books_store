@@ -6,8 +6,5 @@ module Authors
       @params = params
     end
 
-    def call
-      Author.all
-    end
   end
 end

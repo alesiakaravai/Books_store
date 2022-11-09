@@ -5,17 +5,13 @@ module Books
     def initialize(params = {})
       @params = params
     end
+    
+    def task_217a
+      Book.where(year: 1990..2000).where(quantity: 3..)
+    end
 
-    def call
+    def task_217b
       
-    end
-
-    def task_213a
-      Book.count
-    end
-
-    def task_215a
-      Book.sum(:quantity).to_f / Book.count(:quantity).to_f
     end
   end
 end
