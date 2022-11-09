@@ -4,4 +4,7 @@ class Book < ApplicationRecord
   has_many :authors_books
   has_many :authors, through: :authors_books
   has_many :subscriptions
+
+  validates :name, :year, :quantity, presence: true
+  validates :name, length: { maximum: 150, too_long: "%{count} characters is the maximum allowed" }
 end
