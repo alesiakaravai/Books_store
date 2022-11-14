@@ -6,5 +6,5 @@ class Book < ApplicationRecord
   has_many :subscriptions
 
   validates :name, :year, :quantity, presence: true
-  validates :name, length: { maximum: 150, too_long: "%{count} characters is the maximum allowed" }
+  validates :name, length: { maximum: 150 }
 end
