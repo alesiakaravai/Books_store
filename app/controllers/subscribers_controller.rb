@@ -4,6 +4,8 @@ class SubscribersController < ApplicationController
   # GET /subscribers or /subscribers.json
   def index
     @subscribers = Subscriber.all
+
+    render json: SubscriberBlueprint.render(@subscribers)
   end
 
   # GET /subscribers/1 or /subscribers/1.json
@@ -25,11 +27,11 @@ class SubscribersController < ApplicationController
 
     respond_to do |format|
       if @subscriber.save
-        format.html { redirect_to subscriber_url(@subscriber), notice: "Subscriber was successfully created." }
-        format.json { render :show, status: :created, location: @subscriber }
+        # format.html { redirect_to subscriber_url(@subscriber), notice: "Subscriber was successfully created." }
+        render json: @subscriber, status: :created
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @subscriber.errors, status: :unprocessable_entity }
+        # format.html { render :new, status: :unprocessable_entity }
+        render json: @subscriber.errors, status: :unprocessable_entity
       end
     end
   end

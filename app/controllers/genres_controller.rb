@@ -25,11 +25,11 @@ class GenresController < ApplicationController
 
     respond_to do |format|
       if @genre.save
-        format.html { redirect_to genre_url(@genre), notice: "Genre was successfully created." }
-        format.json { render :show, status: :created, location: @genre }
+        # format.html { redirect_to genre_url(@genre), notice: "Genre was successfully created." }
+        render json: @genre, status: :created
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @genre.errors, status: :unprocessable_entity }
+        # format.html { render :new, status: :unprocessable_entity }
+        render json: @genre.errors, status: :unprocessable_entity
       end
     end
   end

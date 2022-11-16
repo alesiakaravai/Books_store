@@ -4,6 +4,8 @@ class AuthorsController < ApplicationController
   # GET /authors or /authors.json
   def index
     @authors = Author.all
+
+    render json: AuthorBlueprint.render(@authors)
   end
 
   # GET /authors/1 or /authors/1.json
@@ -25,11 +27,11 @@ class AuthorsController < ApplicationController
 
     respond_to do |format|
       if @author.save
-        format.html { redirect_to author_url(@author), notice: "Author was successfully created." }
-        format.json { render :show, status: :created, location: @author }
+        # format.html { redirect_to author_url(@author), notice: "Author was successfully created." }
+        render json: @author, status: :created
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @author.errors, status: :unprocessable_entity }
+        # format.html { render :new, status: :unprocessable_entity }
+        render json: @author.errors, status: :unprocessable_entity
       end
     end
   end
